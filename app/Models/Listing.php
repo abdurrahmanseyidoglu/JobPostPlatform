@@ -9,17 +9,10 @@ class Listing extends Model
 {
     use HasFactory;
 
-    public static function find($id)
+
+    public function scopeFilter($query, array $filters)
     {
-        $listings = self::all();
-        foreach ($listings as $listing) {
-            if ($listing['id'] == $id) {
-                return $listing;
-            }
-        }
     }
 
     protected $fillable = ['title', 'company', 'location', 'website', 'email', 'description', 'tags'];
-
-
 }

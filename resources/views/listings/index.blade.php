@@ -1,7 +1,6 @@
-@extends('layout')
-@section('content')
+<x-layout>
     @include('partials._search')
     @foreach ($listings as $listing)
-        <x-single-list :listing="$listing" />
+        <x-listing-card :listing="$listing" />
     @endforeach
-@endsection
+</x-layout>

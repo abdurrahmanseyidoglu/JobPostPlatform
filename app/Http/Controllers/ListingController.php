@@ -8,12 +8,15 @@ use Illuminate\Http\Request;
 class ListingController extends Controller
 {
     //get and Show all listing
-    public function index(Request $request)
+    public function index()
     {
         return view('listings.index', [
-            //latest()->get() is the same as all() but this will return sorted array
-            'listings' => Listing::latest()->get()
+            'listings' => Listing::latest()->filter(request(['tag', 'search']))->get()
         ]);
+    }
+    public function create()
+    {
+        return view('listings.create');
     }
 
     //get and show single listing

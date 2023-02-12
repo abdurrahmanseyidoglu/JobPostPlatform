@@ -17,10 +17,10 @@ class Listing extends Model
         }
         if ($filters['search'] ?? false) {
             $query->where('title', 'like', '%' . request('search') . '%')->
-                orWhere('description', 'like', '%' . request('search') . '%')->
-                orWhere('tags', 'like', '%' . request('search') . '%');
+            orWhere('description', 'like', '%' . request('search') . '%')->
+            orWhere('tags', 'like', '%' . request('search') . '%');
         }
     }
 
-    protected $fillable = ['title', 'company', 'location', 'website', 'email', 'description', 'tags'];
+    protected $fillable = ['title', 'company', 'location', 'website', 'email', 'description', 'tags', 'logo'];
 }

@@ -7,7 +7,7 @@
         @endforeach
 
     @else
-        <h1 class="text-red">No lists found!</h1>
+        <h1 class="text-red">No lists found!!</h1>
     @endif
     <div class="mt-6 p-4">
         {{$listings->links()}}

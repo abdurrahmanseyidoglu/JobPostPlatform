@@ -21,7 +21,7 @@ class UserController extends Controller
                 'email' => ['required', 'email', Rule::unique('users', 'email')],
                 'password' => ['required', 'confirmed', 'min:6'],
             ]);
-        //Hash the password
+        //Hash the password.
         $formFields['password'] = encrypt($formFields['password']);
         //create the user
         $user = User::create($formFields);

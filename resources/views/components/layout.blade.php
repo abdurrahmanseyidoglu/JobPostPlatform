@@ -31,13 +31,30 @@
 <nav class="flex justify-between items-center mb-4">
     <a href="/"><img class="w-24" src="{{ asset('images/logo.png') }}" alt="logo" class="logo"/></a>
     <ul class="flex space-x-6 mr-6 text-lg">
-        <li>
-            <a href="register.html" class="hover:text-laravel"><i class="fa-solid fa-user-plus"></i> Register</a>
-        </li>
-        <li>
-            <a href="login.html" class="hover:text-laravel"><i class="fa-solid fa-arrow-right-to-bracket"></i>
-                Login</a>
-        </li>
+        @if(auth()->check())
+            <li>
+                {{auth()->user()->name}}
+            </li>
+            <li>
+                <form method="post" action="/logout">
+                    @csrf
+                    <button type="submit" class="hover:text-laravel"><i
+                            class="fa-solid fa-arrow-right-to-bracket"></i>
+                        Logout
+                    </button>
+                </form>
+
+            </li>
+        @else
+            <li>
+                <a href="/register" class="hover:text-laravel"><i class="fa-solid fa-user-plus"></i> Register</a>
+            </li>
+            <li>
+                <a href="/login" class="hover:text-laravel"><i class="fa-solid fa-arrow-right-to-bracket"></i>
+                    Login</a>
+            </li>
+        @endif
+
     </ul>
 </nav>
 

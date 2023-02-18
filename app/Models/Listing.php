@@ -22,5 +22,13 @@ class Listing extends Model
         }
     }
 
-    protected $fillable = ['title', 'company', 'location', 'website', 'email', 'description', 'tags', 'logo'];
+    protected $fillable = ['title', 'company', 'location', 'user_id',
+        'website', 'email', 'description', 'tags', 'logo'];
+
+    // Relationship To User
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
 }

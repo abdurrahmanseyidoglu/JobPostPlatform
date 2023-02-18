@@ -22,12 +22,13 @@ class UserController extends Controller
                 'password' => ['required', 'confirmed', 'min:6'],
             ]);
         //Hash the password.
-        $formFields['password'] = encrypt($formFields['password']);
-        //create the user
+        $formFields['password'] = bcrypt($formFields['password']);
+
+        //Create the user
         $user = User::create($formFields);
-        //then log him in
+        //Then log him in
         auth()->login($user);
-        return redirect('/listings')->with('message', 'User created and logged in');
+        return redirect('/')->with('message', 'User created and logged in');
 
     }
 
@@ -36,7 +37,7 @@ class UserController extends Controller
         auth()->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/listings')->with('message', 'Logged out !');
+        return redirect('/')->with('message', 'Logged out !');
     }
 
     public function login()
@@ -51,14 +52,11 @@ class UserController extends Controller
             'email' => ['required', 'email'],
             'password' => 'required'
         ]);
-
+//        dd((auth()->attempt($formFields)) , $formFields);
         if (auth()->attempt($formFields)) {
             $request->session()->regenerate();
-
-            return redirect('/listings')->with('message', 'You are now logged in!');
+            return redirect('/')->with('message', 'logged in!');
         }
-
         return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
     }
-
 }

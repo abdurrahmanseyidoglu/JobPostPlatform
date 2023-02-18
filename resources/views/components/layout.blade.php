@@ -36,6 +36,10 @@
                 {{auth()->user()->name}}
             </li>
             <li>
+                <i class="fa-solid fa-gear"></i> <a href="/manage/listings">Manage Listings </a>
+
+            </li>
+            <li>
                 <form method="post" action="/logout">
                     @csrf
                     <button type="submit" class="hover:text-laravel"><i

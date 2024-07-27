@@ -55,7 +55,7 @@ class ListingController extends Controller
     }
 
 
-    //Show update foem
+    //Show update form
     public function edit(Listing $listing)
     {
         return view('listings.edit', ['listing' => $listing]);
